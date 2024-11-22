@@ -131,9 +131,6 @@ class App:
         if self.count == self.count2:
             makeButton('Submit', self.func)
 
-    def newDict(self):
-        pass
-
     def newEvent(self):
         self.count = 0
         self.count2 = 6
@@ -146,6 +143,7 @@ class App:
         makeLable(f'What Event?', 12)
         event = tk.Entry(root)
         event.pack()
+        event.focus_set()
         makeLable(f'\nWhat Year?\nxxxx', 12)
         year = tk.Entry(root)
         year.pack()
@@ -161,6 +159,7 @@ class App:
         makeLable(f'\nam or pm?', 12)
         apm = tk.Entry(root)
         apm.pack()
+        entrys_focus_color(root)
         def assighn():
             self.results = [event.get(), year.get(), month.get(), day.get(), time.get(), apm.get()]
             self.func()
@@ -193,6 +192,7 @@ class App:
         makeLable(f'What Event?', 12)
         event = tk.Entry(root)
         event.pack()
+        event.focus_set()
         makeLable(f'\nWhat Year?\nxxxx', 12)
         year = tk.Entry(root)
         year.pack()
@@ -208,6 +208,7 @@ class App:
         makeLable(f'\nam or pm?', 12)
         apm = tk.Entry(root)
         apm.pack()
+        entrys_focus_color(root)
         def assighn():
             self.results = [event.get(), year.get(), month.get(), day.get(), time.get(), apm.get()]
             self.func()
@@ -227,7 +228,15 @@ class App:
         forget_all(root)
         makeLable('\n*Enter In Event Manager*\n\n', 18)
         self.dataBox2('Stored', self.dataLst)
-        self.handleui(code, '\nEnter ID#')
+        makeLable(f'\nEnter ID#', 12)
+        id = tk.Entry(root)
+        id.pack()
+        id.focus_set()
+        entrys_focus_color(root)
+        def assighn():
+            self.results = [id.get()]
+            self.func()
+        makeButton('Submit', assighn)
         makeButton('Home', self.btm)
         makeButton('Options', self.options)
 
@@ -290,7 +299,14 @@ class App:
         forget_all(root)
         makeLable('\n*Delete Event Manager*\n\n', 18)
         self.dataBox2('Stored', self.dataLst)
-        self.handleui(code, '\nEnter ID#')
+        id = tk.Entry(root)
+        id.pack()
+        id.focus_set()
+        entrys_focus_color(root)
+        def assighn():
+            self.results = [id.get()]
+            self.func()
+        makeButton('Submit', assighn)
         makeButton('Home', self.btm)
         makeButton('Options', self.options)
         root.mainloop()
@@ -598,6 +614,23 @@ def makeLable(string, size):
 
 def newEntry():
     return tk.Entry(root, width=15, bg="#E3E3E3", borderwidth=5)
+
+#entrys bg color change on focus
+def on_focus_in(event):
+    event.widget.config(bg='lightblue')
+
+def on_focus_out(event):
+    event.widget.config(bg='white')
+
+def on_return_next(event):
+    event.widget.tk_focusNext().focus()
+
+def entrys_focus_color(root):
+    for widget in root.winfo_children():
+        if isinstance(widget, tk.Entry):
+            widget.bind("<FocusIn>", on_focus_in)
+            widget.bind("<FocusOut>", on_focus_out)
+            widget.bind("<Return>", on_return_next)
 
 colorsFile = 'pldata/colors.txt'
 userColors = getLst(colorsFile)
