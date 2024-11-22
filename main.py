@@ -60,6 +60,24 @@ class App:
         makeButton('Options', self.options)
         root.mainloop()
 
+    def errorMessage3(self):
+        self.count = 0
+        forget_all(root)
+        makeLable(f'\n\n\n-Error3: {self.results[0]} Not In Data..\n\n', 16)
+        makeButton('Home', self.btm)
+        makeButton('Try Again', self.editData)
+        makeButton('Options', self.options)
+        root.mainloop()
+
+    def errorMessage4(self):
+        self.count = 0
+        forget_all(root)
+        makeLable(f'\n\n\n-Error4: {self.results[0]} Not In Data..\n\n', 16)
+        makeButton('Home', self.btm)
+        makeButton('Try Again', self.unschedual)
+        makeButton('Options', self.options)
+        root.mainloop()
+
     def ohno(self):
         forget_all(root)
         makeLable('\n\n\n-Exception raised:\nThe Date You Entered Dosent Exist.\n', 16)
@@ -91,14 +109,6 @@ class App:
         except Exception as _:
             self.ohno()
 
-    def handleui(self, value, string):
-        makeLable(string, 12)
-        value = newEntry()
-        value.pack()
-        self.entries.append(value)
-        self.entries[0].focus_set()
-        self.makeBind(value)
-
     def dataStr2(self, subject, dictLst):
         tempLst = sort_dates(dictLst)
         string = ''
@@ -114,22 +124,9 @@ class App:
     def debuger(self, value):
         print(f'DEBUGGER::{value}::')
 
-    def handle_entry(self, event):
-        self.readyButton()
-        self.results.append(event.widget.get())
-        event.widget.tk_focusNext().focus()
-
-    def makeBind(self, entry):
-        return entry.bind("<Return>", self.handle_entry)
-
     def btm(self):
         forget_all(root)
         main()
-    
-    def readyButton(self):
-        self.count += 1
-        if self.count == self.count2:
-            makeButton('Submit', self.func)
 
     def newEvent(self):
         self.count = 0
@@ -165,15 +162,6 @@ class App:
             self.func()
         makeButton('Submit', assighn)
         makeButton('Home', self.btm)
-        makeButton('Options', self.options)
-        root.mainloop()
-
-    def errorMessage3(self):
-        self.count = 0
-        forget_all(root)
-        makeLable(f'\n\n\n-Error3: {self.results[0]} Not In Data..\n\n', 16)
-        makeButton('Home', self.btm)
-        makeButton('Try Again', self.editData)
         makeButton('Options', self.options)
         root.mainloop()
 
@@ -239,15 +227,6 @@ class App:
         makeButton('Submit', assighn)
         makeButton('Home', self.btm)
         makeButton('Options', self.options)
-
-    def errorMessage4(self):
-        self.count = 0
-        forget_all(root)
-        makeLable(f'\n\n\n-Error4: {self.results[0]} Not In Data..\n\n', 16)
-        makeButton('Home', self.btm)
-        makeButton('Try Again', self.unschedual)
-        makeButton('Options', self.options)
-        root.mainloop()
 
     def removeData(self):
         self.code = self.results[0]
