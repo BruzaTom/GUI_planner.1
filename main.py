@@ -138,23 +138,23 @@ class App:
         event,year ,month ,day , time, apm = 0, 0, 0, 0, 0, 0
         makeLable('\n*Edit Event Manager*\n', 18)
         makeLable(f'What Event?', 12)
-        event = tk.Entry(root)
+        event = tk.Entry(root, insertwidth=6, font=font_style)
         event.pack()
         event.focus_set()
         makeLable(f'\nWhat Year?\nxxxx', 12)
-        year = tk.Entry(root)
+        year = tk.Entry(root, insertwidth=6, font=font_style)
         year.pack()
         makeLable(f'\nWhat Month?\nxx', 12)
-        month = tk.Entry(root)
+        month = tk.Entry(root, insertwidth=6, font=font_style)
         month.pack()
         makeLable(f'\nWhat day?\nxx', 12)
-        day = tk.Entry(root)
+        day = tk.Entry(root, insertwidth=6, font=font_style)
         day.pack()
         makeLable(f'\nWhat time?\nxxxx', 12)
-        time = tk.Entry(root)
+        time = tk.Entry(root, insertwidth=6, font=font_style)
         time.pack()
         makeLable(f'\nam or pm?', 12)
-        apm = tk.Entry(root)
+        apm = tk.Entry(root, insertwidth=6, font=font_style)
         apm.pack()
         entrys_focus_color(root)
         def assighn():
@@ -178,23 +178,23 @@ class App:
         self.results = []
         makeLable('\n*Edit Event Manager*\n', 18)
         makeLable(f'What Event?', 12)
-        event = tk.Entry(root)
+        event = tk.Entry(root, insertwidth=6, font=font_style)
         event.pack()
         event.focus_set()
         makeLable(f'\nWhat Year?\nxxxx', 12)
-        year = tk.Entry(root)
+        year = tk.Entry(root, insertwidth=6, font=font_style)
         year.pack()
         makeLable(f'\nWhat Month?\nxx', 12)
-        month = tk.Entry(root)
+        month = tk.Entry(root, insertwidth=6, font=font_style)
         month.pack()
         makeLable(f'\nWhat day?\nxx', 12)
-        day = tk.Entry(root)
+        day = tk.Entry(root, insertwidth=6, font=font_style)
         day.pack()
         makeLable(f'\nWhat time?\nxxxx', 12)
-        time = tk.Entry(root)
+        time = tk.Entry(root, insertwidth=6, font=font_style)
         time.pack()
         makeLable(f'\nam or pm?', 12)
-        apm = tk.Entry(root)
+        apm = tk.Entry(root, insertwidth=6, font=font_style)
         apm.pack()
         entrys_focus_color(root)
         def assighn():
@@ -217,7 +217,7 @@ class App:
         makeLable('\n*Enter In Event Manager*\n\n', 18)
         self.dataBox2('Stored', self.dataLst)
         makeLable(f'\nEnter ID#', 12)
-        id = tk.Entry(root)
+        id = tk.Entry(root, insertwidth=6, font=font_style)
         id.pack()
         id.focus_set()
         entrys_focus_color(root)
@@ -278,7 +278,7 @@ class App:
         forget_all(root)
         makeLable('\n*Delete Event Manager*\n\n', 18)
         self.dataBox2('Stored', self.dataLst)
-        id = tk.Entry(root)
+        id = tk.Entry(root, insertwidth=6, font=font_style)
         id.pack()
         id.focus_set()
         entrys_focus_color(root)
@@ -596,7 +596,7 @@ def newEntry():
 
 #entrys bg color change on focus
 def on_focus_in(event):
-    event.widget.config(bg='lightblue')
+    event.widget.config(bg=userColors[0])
 
 def on_focus_out(event):
     event.widget.config(bg='white')
@@ -617,6 +617,7 @@ buttonbg = buttonGrey
 buttonlc = userColors[0]
 lablebg = lableGrey
 lablelc = userColors[0]
+font_style = ("Helvetica", 12, "bold")
 #globals
 dataFile = "pldata/plannerData.txt"
 now = datetime.datetime.now()
