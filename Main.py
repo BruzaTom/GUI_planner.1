@@ -6,7 +6,7 @@ def main():
     user = App()
     updateFile(removeOld(getLst(dataFile), date, time), dataFile)
     #print initmessage
-    makeLable(initMessage(now, date, daysLeft), 18)
+    makelable(initMessage(now, date, daysLeft), 18)
     #pint calendar
     tk.Label(root, text=miniCal(now), font="TkFixedFont", justify=tk.LEFT, fg=lablelc, bg=lablebg).pack()
     rcButton('Today\n'+str(len(inToday(getLst(dataFile), date))), user.checkToday)

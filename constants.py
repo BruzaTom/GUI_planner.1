@@ -35,16 +35,6 @@ def rcButton(name, func):
         font=("Arial", 12, "bold")
         ).pack()
 
-def makeButton(name, func):
-    return tk.Button(
-        root,
-        text=name,
-        command=func,
-        fg=buttonlc, bg=buttonbg,
-        height=3, width=8,
-        font=("Arial", 12, "bold")
-        ).pack()
-
 def sort_dates(dictLst):
     tempLst = dictLst.copy()
     return sorted(sorted(sorted(sorted(sorted(tempLst,
@@ -191,8 +181,18 @@ def updateFile(Lst, file):
     with open(file, "w") as f:
         f.write(str(Lst))
 
-def makeLable(string, size):
+def makelable(string, size):
     return tk.Label(root, text=string, fg=lablelc, bg=lablebg, font=("Arial", size, "bold")).pack()
+
+def makeButton(name, func):
+    return tk.Button(
+        root,
+        text=name,
+        command=func,
+        fg=buttonlc, bg=buttonbg,
+        height=3, width=8,
+        font=("Arial", 12, "bold")
+        ).pack()
 
 def newEntry():
     return tk.Entry(root, width=15, bg="#E3E3E3", borderwidth=5)
