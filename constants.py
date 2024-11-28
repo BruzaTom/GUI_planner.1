@@ -25,15 +25,6 @@ def forget_all(parent):
     for widget in parent.winfo_children():
         widget.forget()
 #End tkinter
-def rcButton(name, func):
-    return tk.Button(
-        root,
-        text=name,
-        command=func,
-        fg=buttonbg, bg=buttonlc,
-        height=3, width=8,
-        font=("Arial", 12, "bold")
-        ).pack()
 
 def sort_dates(dictLst):
     tempLst = dictLst.copy()
@@ -190,6 +181,16 @@ def makeButton(name, func):
         text=name,
         command=func,
         fg=buttonlc, bg=buttonbg,
+        height=3, width=8,
+        font=("Arial", 12, "bold")
+        ).pack()
+
+def rcButton(name, func):
+    return tk.Button(
+        root,
+        text=name,
+        command=func,
+        fg=buttonbg, bg=buttonlc,
         height=3, width=8,
         font=("Arial", 12, "bold")
         ).pack()

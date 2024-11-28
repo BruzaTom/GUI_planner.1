@@ -29,6 +29,7 @@ class App:
         self.dataLst = getLst(dataFile)
         self.weekEvents = inWeek(self.dataLst, date)
         self.dataFile = dataFile
+        self.code = None
 
     def errMessage(self):
         self.count = 0
@@ -138,6 +139,7 @@ class App:
     def btm(self):
         forget_all(root)
         updateFile(removeOld(getLst(dataFile), date, time), dataFile)
+        self.update()
         #print initmessage
         self.makelable(initMessage(now, date, daysLeft), 18)
         #pint calendar
